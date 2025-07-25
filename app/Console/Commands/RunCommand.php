@@ -28,7 +28,8 @@ class RunCommand extends Command
      */
     public function handle()
     {
-        $numberCollection = collect([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+        $numberCollection = collect([1, 2, 3, 4, 5]);
+        $numberCollection2 = collect([ 6, 7, 8, 9, 10]);
         $anotherNumberCollection = collect([10, 20, 30, 40, 50]);
 
         $assocWorkerCollection = collect([
@@ -46,13 +47,18 @@ class RunCommand extends Command
             ],
         ]);
 
+        $collection = collect([
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9],
+        ]);
+
         $nameCollection = collect(['Ivan', 'Boris', 'Kate',]);
+        $ageCollection = collect([25, 40, 32, 44]);
         $anotherNameCollection = collect(['Ann', 'John']);
 
 
-        $res = $anotherNumberCollection->chunkWhile(function ($value, $key, $collection) {
-            return $value % 10 === 0;
-        });
+        $res = $numberCollection->diff($numberCollection2);
         dd($res);
     }
 }
