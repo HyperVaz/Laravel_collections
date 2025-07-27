@@ -45,6 +45,10 @@ class RunCommand extends Command
                 'name' => 'Helen',
                 'age' => 18
             ],
+            [
+                'name' => 'Ivan',
+                'age' => 33
+            ],
         ]);
 
         $collection = collect([
@@ -55,10 +59,13 @@ class RunCommand extends Command
 
         $nameCollection = collect(['Ivan', 'Boris', 'Kate',]);
         $ageCollection = collect([25, 40, 32, 44]);
-        $anotherNameCollection = collect(['Ann', 'John']);
-
-
-        $res = $numberCollection->diff($numberCollection2);
+        $anotherNameCollection = collect(['Ann', 'John', 'Kate', 'Kate']);
+        $assocAnotherNameCollection = collect(['Ann'=>'boss', 'John'=>'developer']);
+        $res = $assocWorkerCollection->flatMap(function ($values){
+            return [
+                $values['name'],
+            ];
+        });
         dd($res);
     }
 }
