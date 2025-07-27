@@ -61,11 +61,7 @@ class RunCommand extends Command
         $ageCollection = collect([25, 40, 32, 44]);
         $anotherNameCollection = collect(['Ann', 'John', 'Kate', 'Kate']);
         $assocAnotherNameCollection = collect(['Ann'=>'boss', 'John'=>'developer']);
-        $res = $assocWorkerCollection->flatMap(function ($values){
-            return [
-                $values['name'],
-            ];
-        });
+        $res = $assocAnotherNameCollection->keys();
         dd($res);
     }
 }
