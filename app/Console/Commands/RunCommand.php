@@ -64,9 +64,9 @@ class RunCommand extends Command
         $anotherNameCollection = collect(['Ann', 'John', 'Kate', 'Kate']);
         $assocAnotherNameCollection = collect(['Ann' => 'boss', 'John' => 'developer']);
 
-        [$first, $second] = $numberCollection->partition(function ($value) {
-            return $value % 2 == 0;
-        });
-        dd($first, $second);
+        $users = User::limit(10)->get();
+
+        $res = $users->pluck('id')->toArray();
+        dd($res);
     }
 }
