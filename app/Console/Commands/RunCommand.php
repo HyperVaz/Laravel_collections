@@ -30,7 +30,7 @@ class RunCommand extends Command
      */
     public function handle()
     {
-        $numberCollection = collect([1, 2, 3, 4, 5]);
+        $numberCollection = collect([1, 2, 5, 3, 4, 5]);
         $numberCollection2 = collect([6, 7, 8, 9, 10]);
         $anotherNumberCollection = collect([10, 20, 30, 40, 50]);
 
@@ -60,13 +60,16 @@ class RunCommand extends Command
         ]);
 
         $nameCollection = collect(['Ivan', 'Boris', 'Kate',]);
+        $nameCollection2 = collect(['Timur', 'Renat', 'Lena', 'Ivan', 'Vasya', 'Donya', 'Cock']);
         $ageCollection = collect([25, 40, 32, 44]);
         $anotherNameCollection = collect(['Ann', 'John', 'Kate', 'Kate']);
         $assocAnotherNameCollection = collect(['Ann' => 'boss', 'John' => 'developer']);
 
         $users = User::limit(10)->get();
 
-        $res = $users->pluck('id')->toArray();
+        $res = $numberCollection->sole(function ($value) {
+            return $value === 5;
+        });
         dd($res);
     }
 }
