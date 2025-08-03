@@ -67,9 +67,8 @@ class RunCommand extends Command
 
         $users = User::limit(10)->get();
 
-        $res = $numberCollection->sole(function ($value) {
-            return $value === 5;
-        });
+        $res = $nameCollection->zip([1, 2, 3, 4,
+        ]);
         dd($res);
     }
 }
